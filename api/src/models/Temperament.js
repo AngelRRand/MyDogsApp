@@ -1,8 +1,11 @@
-const {DataTypes} = require('sequelize');
-module.exports = (sequelize) =>{
+const { DataTypes } = require('sequelize');
+
+module.exports = (sequelize) => {
+    // defino el modelo
     sequelize.define('temperament', {
-        name:{
+        name: {
             type: DataTypes.STRING,
-        }
-    }, {timesstamps: false} );
-}
+            allowNull: false,
+        },
+    });
+};

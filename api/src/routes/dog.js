@@ -1,6 +1,6 @@
  const express = require('express');
 const dogs = express.Router();
-const { allDogApi } = require('../controllers/controllers.js');
+const { allDogs } = require('../controllers/controlsDogs.js');
 //const { Temperament, Dog } = require('../db');
 
 dogs.use(express.json());
@@ -8,7 +8,7 @@ dogs.use(express.json());
 dogs.get('/', async (req, res, next) =>{
     const name = req.query.name
     try {
-        let dogs = await allDogApi();
+        let dogs = await allDogs();
         if(name){
             let dogsfilter = await dogs.filter(dog => dog.name.includes(name))
             if(dogsfilter.length){
@@ -23,7 +23,7 @@ dogs.get('/', async (req, res, next) =>{
         next(error)
         return res.send(console.log('error'))
     }
-})
+});
 
 dogs.get('/:idRaza', async (req, res, next)=>{
     const {idRaza} = req.params;
@@ -32,7 +32,7 @@ dogs.get('/:idRaza', async (req, res, next)=>{
         return res.status(400).send(console.log('no se encontro ese id'));
     } else{
         try {
-            let dogs = await allDogApi();
+            let dogs = await allDogs();
             let dogParams = dogs.find(dog => dog.id.toString() === idRaza);
             res.status(200).json(dogParams);
         } catch (error) {
@@ -40,9 +40,29 @@ dogs.get('/:idRaza', async (req, res, next)=>{
             return res.send(console.log('error en el params'));
         }
     }
+});
+
+dogs.post('/', async(req, res, next)=>{
+    
 })
 
 
 
 
 module.exports = dogs; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

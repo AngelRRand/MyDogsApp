@@ -4,43 +4,45 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('dog', {
-
     id:{
       type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true
     },
-
-
-    name: {
+    name:{
       type: DataTypes.STRING,
       allowNull: false,
     },
-
-
-    height:{
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-
-
-    weight:{
-      type: DataTypes.STRING,
+    height_min:{
+      type: DataTypes.INTEGER,
       allowNull: false
     },
-
-
+    weight_min:{
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    height_max:{
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    weight_max:{
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     life_span:{
-      type: DataTypes.STRING,  
-    },
-    origin:{
       type: DataTypes.STRING,
+      allowNull: true
     },
-
     image:{
       type: DataTypes.STRING,
-      defaultValue: "https://soyunperro.com/wp-content/uploads/2020/04/perro-durmiendo-placenteramente.jpg"
+      defaultValue: "https://soyunperro.com/wp-content/uploads/2020/04/perro-durmiendo-placenteramente.jpg",
+      allowNull: true
+    },
+    createdInDB: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
     }
-
-  }, {timestamps: false});
+  });
 };

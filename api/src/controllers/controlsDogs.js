@@ -29,12 +29,21 @@ const { Temperament, Dog } = require('../db');
                     attributes: []
                 },
                 model: Temperament
-            }
+            },
         })
+        console.log(bd)
+        return bd
     } 
+    //console.log(allDogsDb())
     
-    
+     const allDogs = async () =>{
+        let dogsApi = await allDogApi();
+        let dogsDb = await allDogsDb();
+        let dogsAll = dogsApi.concat(dogsDb)
+        return dogsAll
+    } 
+    //console.log(allDogs())
 
 module.exports = {
-    allDogApi
+    allDogs
 };

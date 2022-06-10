@@ -1,6 +1,6 @@
 const axios = require('axios')
 const KEY = process.env.API_KEY;
-//const { Temperament } = require('../db');
+const { Temperament } = require('../db');
 
 
 const tempApi = async () => {
@@ -10,18 +10,39 @@ const tempApi = async () => {
     }).flatMap(dog => dog?.split(', '))
     //console.log(ApiInfo)
     let temSet = [...new Set(ApiInfo)]
-    console.log(temSet);
+    //console.log(temSet);
     //let temperament = [...new Set(ApiInfo.flat())];
     //console.log(temperament)
-
-    return temSet
+    //'happy',
+    temSet.forEach(element => {
+        if(element){
+            Temperament.findOrCreate({
+                where: { name: element }
+            })
+        }
+    });
 }
-const tempBd = async () => {
-    const tempApi = await tempApi()
-    ///insertar en la base de datos
 
 
-}
-console.log(tempApi())
+/* const tempBd = async () => {
+    let tempApi  = await tempApi()
+        ///insertar en la base de datos
+        console.log(tempApi)
+        tempApi.forEach(element => {
+            
+            Temperament.findOrCreate({
+                where: { name: element }
+            })
+        });
+    
+} */
 
-module.exports = tempApi; 
+
+const allTemp = async () =>{
+
+    let tempAll = await Temperament.findAll()
+    return tempAll
+} 
+//console.log(tempApi())
+
+module.exports = {tempApi, allTemp}; 

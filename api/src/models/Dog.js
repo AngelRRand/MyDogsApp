@@ -36,7 +36,6 @@ module.exports = (sequelize) => {
     },
     image:{
       type: DataTypes.STRING,
-      defaultValue: "https://soyunperro.com/wp-content/uploads/2020/04/perro-durmiendo-placenteramente.jpg",
       allowNull: true
     },
     createdInDB: {

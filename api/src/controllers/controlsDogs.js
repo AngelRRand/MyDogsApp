@@ -39,7 +39,7 @@ const allDogsDb = async () => {
 const allDogs = async () => {
     let dogsApi = await allDogApi();
     let dogsDb = await allDogsDb();
-    console.log(dogsDb)
+    //console.log(dogsDb)
     let dogsAll = dogsApi.concat(dogsDb)
     return dogsAll
 }

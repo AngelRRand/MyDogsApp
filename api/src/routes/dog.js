@@ -7,11 +7,13 @@ dogs.use(express.json());
 
 dogs.get('/', async (req, res, next) => {
     const name = req.query.name
+    console.log(name)
     try {
         let dogs = await allDogs();
         if (name) {
-            let dogsfilter = await dogs.filter(dog => dog.name.includes(name))
-            if (dogsfilter.length) {
+            let dogsfilter = await dogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
+            console.log(dogsfilter)
+            if (dogsfilter.length > 0) {
                 return res.status(200).json(dogsfilter)
             } else {
                 return res.status(400).send(console.log('error, no exite el filtrado'))

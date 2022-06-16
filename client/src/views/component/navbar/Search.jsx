@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import { useDispatch } from "react-redux";
-import { searchDogs } from '../../../redux/actions';
+import { useDispatch,  } from "react-redux";
+import { searchDogs, getAllDogs } from '../../../redux/actions';
 import { BsSearch } from 'react-icons/bs';
 
 export const Search = () => {
@@ -19,16 +19,23 @@ export const Search = () => {
             dogSet('');
         }
     }
+    function handleSearch(e){
+        dogSet(e.target.value) 
+        if(dogState.length === 0 || !dogState || dogState === ''){
+            getAllDogs()
+        }else{
+            dispatch(searchDogs(dogState))
+        }
+    }
 
     return (
         <div>
-            <h2>Buscador</h2>
             <input
                 type="text"
                 id="title"
                 autoComplete="off"
                 value={dogState}
-                onChange={(e) => dogSet(e.target.value)}
+                onChange={(e) => handleSearch(e)}
             />
             <button type="submit" onClick={handleSubmit}>
                 <BsSearch></BsSearch>

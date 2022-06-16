@@ -1,3 +1,140 @@
-nav{
-  background-color: aqua;
+.containerApp {
+  display: flex;
+  
+}
+
+nav {
+  background-color: rgb(255, 255, 255);
+  height: 110vh;
+  width: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-right: 1px solid rgba(0, 0, 0, 0.8);
+  align-self: center;
+  box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+main {
+  display: flex;
+}
+
+.cards {
+  display: grid;
+  height: 100vh;
+  justify-content: center;
+  grid-template-columns: 250px 250px 250px 250px;
+  width: 100vw;
+
+}
+
+.card {
+  margin: 15px;
+  text-align: center;
+  object-fit: contain;
+  border-radius: 20px 20px 0px 0px;
+  text-decoration: none;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  
+}
+
+.card img {
+  border-radius: 20px 20px 0px 0px;
+  transition: all ease 0.3s;
+}
+
+.card:hover img {
+  transform: scale(1.3);
+}
+
+
+.card_img_h {
+  position: relative;
+}
+
+.card_h2 {
+  position: absolute;
+  text-decoration: none;
+  font-size: 10px;
+  color: rgb(0, 0, 0);
+  background-color: white;
+  height: 20px;
+  padding: 15px 0px 15px 0px;
+  bottom: -17px;
+  border-radius: 30px;
+  width: 100%;
+  box-shadow: 20px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.name {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.card img {
+  width: 100%;
+  z-index: 10;
+}
+
+.cards-pagination {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-around;
+}
+
+.pagination {
+  text-align: center;
+  width: 50px;
+}
+
+.pag-circ {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+
+.pag-circ input {
+  border: none;
+  font-size: 15px;
+  width: 100%;
+  text-align: center;
+  background-color: black;
+  color: white;
+  width: 100%;
+}
+
+.button_pag {
+  border: none;
+  margin: 30px -50px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  color: rgb(0, 0, 0);
+}
+
+.card_text {
+  z-index: 300;
+  height: 100%;
+
+}
+
+.card_text .weight {
+  transition: all ease 1s;
+}
+
+
+.weight p {
+  margin: 2px;
+  font-size: 20px;
+}
+
+.text_icon {
+  width: 30px;
+  margin: 0px 20px;
+  color: blueviolet;
+}
+.temperaments span{
+  font-size:11px;
 }

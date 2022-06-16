@@ -26,28 +26,17 @@ export default function dogs(state = inicialState, action) {
                 ...state,
                 detail: action.payload
             }
-        case 'ALFABETIC_DOGS':
 
+        case 'ALFABETIC_DOGS':
             const sortName = action.payload === 'asc' ? 
-                [...state.dogs].sort((a, b) => {
-                const nameA = a.name.toLowerCase()
-                const nameB = b.name.toLowerCase()
-                if (nameA > b.name) {
-                    return 1;
-                }
-                if (nameB > a.name) {
-                    return -1;
-                }
+            [...state.dogs].sort(function (a, b) {
+                if (a.name > b.name) { return 1 }
+                if (b.name > a.name) { return -1 }
                 return 0;
-            }) : [...state.dogs].sort((a, b) => {
-                const nameA = a.name.toLowerCase()
-                const nameB = b.name.toLowerCase()
-                if (nameA > b.name) {
-                    return -1;
-                }
-                if (nameB > a.name) {
-                    return 1;
-                }
+            }) :
+            [...state.dogs].sort(function (a, b) {
+                if (a.name > b.name) { return -1; }
+                if (b.name > a.name) { return 1; }
                 return 0;
             })
             return {
@@ -55,6 +44,22 @@ export default function dogs(state = inicialState, action) {
                 dogs: sortName
             }
 
+        case 'WEIGTH_DOGS':
+            const sortWeigth = action.payload === 'asc'?
+            [...state.dogs].sort((a, b)=>{
+                if(a.weight_max > b.weight_max) {return 1}  
+                if(b.weight_max > a.weight_max) {return -1} 
+                return 0 
+            }) :  
+            [...state.dogs].sort((a, b)=>{
+                if(a.weight_max > b.weight_max) {return -1}  
+                if(b.weight_max > a.weight_max) {return 1} 
+                return 0
+            })
+            return{
+                ...state,
+                dogs: sortWeigth
+            }
         default:
             return state
     }

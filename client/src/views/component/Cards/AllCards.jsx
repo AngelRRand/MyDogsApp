@@ -17,11 +17,8 @@ const Home = () => {
     const max = dogs.length / dogsPag
     return (
         <main>
-            <Pagination
-                pag={pag}
-                setPag={setPag}
-                max={max}
-            />
+            <div className='cards'>
+
             {dogs.slice(
                 (pag - 1) * dogsPag,
                 (pag - 1) * dogsPag + dogsPag
@@ -38,8 +35,19 @@ const Home = () => {
                     />
                 )
             })}
+            </div>
+            <div className='cards-pagination'>
+            <Pagination
+                pag={pag}
+                setPag={setPag}
+                max={max}
+            />
+
+            </div>
             
         </main>
+        
+        
 
     )
 }

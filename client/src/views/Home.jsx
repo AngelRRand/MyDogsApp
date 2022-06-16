@@ -3,9 +3,10 @@ import AllCards from './component/Cards/AllCards'
 import Navbar from './Navbar'
 const Home = () => {
   return (
-    <div>
+    <div className='containerApp'>
         <Navbar></Navbar>
         <AllCards></AllCards>
+        
     </div>
   ) 
 }

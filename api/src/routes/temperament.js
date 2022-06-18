@@ -1,18 +1,18 @@
 const express = require('express');
 const temperament = express.Router();
-const { allTemp } = require('../controllers/controlsTemp');
+const { allTemp, tempApi } = require('../controllers/controlsTemp');
 
 
 temperament.use(express.json());
 
 temperament.get('/', async (req, res, next)=>{
     try {
-        
+        await tempApi()
         let temperaments = await allTemp()
+        console.log(temperaments)
         return res.status(200).send(temperaments)
     } catch (error) {
-        next()
-        return res.send(console.log(error))
+        return res.send(console.log('routes error'))
     }
 })
 

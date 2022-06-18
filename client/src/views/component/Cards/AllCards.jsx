@@ -5,12 +5,12 @@ import Card from './Card';
 import { getAllDogs } from '../../../redux/actions';
 import Pagination from './Pagination';
 const Home = () => {
-    const { dogs } = useSelector((state) => state.dogs);
+    const  dogs  = useSelector((state) => state.dogs);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getAllDogs())
     }, [dispatch])
-
+    //console.log(dogs)
 
     const [pag, setPag] = useState(1);
     const [dogsPag, setDogsPag] = useState(8);

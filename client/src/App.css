@@ -138,3 +138,6 @@ main {
 .temperaments span{
   font-size:11px;
 }
+.temperament_list{
+  display: inline;
+}

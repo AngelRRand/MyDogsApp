@@ -65,7 +65,6 @@ dogs.post('/', async (req, res, next) => {
         next(error)
         res.status(400).send('no se pudo subir el pichichu')
     }
-
 })
 
 

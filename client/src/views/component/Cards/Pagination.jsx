@@ -29,7 +29,6 @@ const Pagination = ({ pag, setPag, max }) => {
   const onChance = (e) => {
     setInput(e.target.value)
   }
-  console.log(max)
   return (
     <div className='pagination'>
       <button className='button_pag' disabled={pag === 1 || pag < 1} onClick={previusPage}> <FaArrowAltCircleUp size={28}/> </button>

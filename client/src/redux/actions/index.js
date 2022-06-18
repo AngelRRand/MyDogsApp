@@ -47,8 +47,9 @@ export function weigthDogs(payload) {
 
 export function filterTemperament() {
     return async function (dispatch) {
-            var response = await axios.get(`http://localhost:3001/temperament}`)
+            var response = await axios.get(`http://localhost:3001/temperaments`)
             var listResponse = response.data.map(temp => temp.name)
+            //console.log(listResponse)
             return dispatch({
                 type: 'DOGS_TEMPERAMENTS',
                 payload: listResponse

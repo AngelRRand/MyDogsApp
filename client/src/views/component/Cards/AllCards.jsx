@@ -15,6 +15,7 @@ const Home = () => {
     const [pag, setPag] = useState(1);
     const [dogsPag, setDogsPag] = useState(8);
     const max = dogs.length / dogsPag
+    console.log(dogs)
     return (
         <main>
             <div className='cards'>
@@ -29,7 +30,7 @@ const Home = () => {
                         id={dog.id}
                         name={dog.name}
                         image={dog.image}
-                        temperament={dog.temperament}
+                        temperaments={dog.temperaments}
                         w_min={dog.weight_min}
                         w_max={dog.weight_max}
                     />

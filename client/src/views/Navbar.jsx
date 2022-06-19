@@ -8,7 +8,7 @@ const Navbar = () => {
         <nav>
             <h1><SiDogecoin size={56}></SiDogecoin></h1>
             <Search></Search>
-             <Filters></Filters> 
+            <Filters></Filters>
             <Orders></Orders>
         </nav>
     )

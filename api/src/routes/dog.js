@@ -7,19 +7,19 @@ dogs.use(express.json());
 
 dogs.get('/', async (req, res, next) => {
     const name = req.query.name
-    console.log(name)
+    //console.log(name)
     try {
         let dogs = await allDogs();
         if (name) {
             let dogsfilter = await dogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
-            console.log(dogsfilter)
+            //console.log(dogsfilter)
             if (dogsfilter.length > 0) {
                 return res.status(200).json(dogsfilter)
             } else {
                 return res.status(400).send(console.log('error, no exite el filtrado'))
             }
         }
-        console.log('try')
+        //console.log('try')
         return res.send(dogs)
     } catch (error) {
         next(error)
@@ -28,19 +28,18 @@ dogs.get('/', async (req, res, next) => {
 });
 
 dogs.get('/:idRaza', async (req, res, next) => {
-    const { idRaza } = req.params;
-    console.log(idRaza)
-    if (!idRaza) {
-        return res.status(400).send(console.log('no se encontro ese id'));
-    } else {
-        try {
-            let dogs = await allDogs();
-            let dogParams = dogs.find(dog => dog.id.toString() === idRaza);
-            res.status(200).json(dogParams);
-        } catch (error) {
-            next(error);
-            return res.send(console.log('error en el params'));
+    try {
+        const { idRaza } = req.params;
+        console.log(idRaza)
+        const allD = await allDogs();
+        if (!idRaza) {
+            res.status(404).json("toodo mal")
+        } else {
+            const dog = allD.find(dogui => dogui.id.toString() === idRaza);
+            res.status(200).json(dog)
         }
+    } catch (error) {
+        res.status(404).send(error)
     }
 });
 

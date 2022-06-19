@@ -14,7 +14,7 @@ const allDogApi = async () => {
             name: d.name,
             image: d.image.url,
             life_span: d.life_span,
-            temperament: d.temperament,
+            temperaments: d.temperament,
         }
     })
 
@@ -23,13 +23,13 @@ const allDogApi = async () => {
 }
 const allDogsDb = async () => {
     let bd = await Dog.findAll({
-        includes: {
+        include: {
+            model: Temperament,
             attributes: ['name'],
             through: {
-                attributes: []
+                attributes: [],
             },
-            model: Temperament
-        },
+        }
     })
     //console.log(bd)
     return bd
@@ -48,9 +48,9 @@ const allDogs = async () => {
 
 const postDogs = async (weight_min, weight_max, height_min, height_max, name, life_span, temperament, image) => {
 
-    
+   
     if (weight_min && weight_max && height_min && height_max && name && temperament) {
-
+        
         const newDog = await Dog.create({
             name: name,
             height_min: parseInt(height_min),
@@ -58,19 +58,20 @@ const postDogs = async (weight_min, weight_max, height_min, height_max, name, li
             weight_min: parseInt(weight_min),
             weight_max: parseInt(weight_max),
             life_span: life_span,
-            temperament: temperament,
             image: image || 'https://s03.s3c.es/imag/_v0/770x420/7/6/e/Perro-mirando-fijamente-iStock.jpg',
         });
-        //console.log(temperament)
+        console.log(temperament)
 
-        let tempMap = [temperament]
-
-        tempMap.map(async d => {
-            const temp = await Temperament.findAll({
-                where: { name: d }
+        temperament.map(async el => {
+            console.log(el)
+            const findTemp = await Temperament.findAll({
+                where: { name: el }
             });
-            newDog.addTemperament(temp);
+            console.log(findTemp)
+            //console.log(newDog)
+            newDog.addTemperament(findTemp);
         })
+        return await newDog
 
     } else {
         console.log('Falta informacion para crear al pichichu')

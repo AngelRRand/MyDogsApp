@@ -1,6 +1,6 @@
 .containerApp {
   display: flex;
-  
+
 }
 
 nav {
@@ -35,7 +35,7 @@ main {
   border-radius: 20px 20px 0px 0px;
   text-decoration: none;
   box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  
+
 }
 
 .card img {
@@ -135,9 +135,41 @@ main {
   margin: 0px 20px;
   color: blueviolet;
 }
-.temperaments span{
-  font-size:11px;
+
+.temperaments span {
+  font-size: 11px;
 }
-.temperament_list{
+
+.temperament_list {
   display: inline;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.detailArrow {
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-left: 30px;
+  margin-top: 5px;
+  color: black;
+}
+
+.detailFocus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@keyframes floating {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, 15px); }
+  100%   { transform: translate(0, -0px); }   
 }

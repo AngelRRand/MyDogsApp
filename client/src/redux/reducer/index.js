@@ -23,50 +23,64 @@ function rootReducer(state = inicialState, action) {
             }
 
         case 'DETAIL_DOG':
+            console.log('se hizo un detail')
             return {
                 ...state,
                 detail: action.payload
             }
 
         case 'ALFABETIC_DOGS':
-            const sortName = action.payload === 'asc' ? 
-            [...state.dogs].sort(function (a, b) {
-                if (a.name > b.name) { return 1 }
-                if (b.name > a.name) { return -1 }
-                return 0;
-            }) :
-            [...state.dogs].sort(function (a, b) {
-                if (a.name > b.name) { return -1; }
-                if (b.name > a.name) { return 1; }
-                return 0;
-            })
+            const sortName = action.payload === 'asc' ?
+                [...state.dogs].sort(function (a, b) {
+                    if (a.name > b.name) { return 1 }
+                    if (b.name > a.name) { return -1 }
+                    return 0;
+                }) :
+                [...state.dogs].sort(function (a, b) {
+                    if (a.name > b.name) { return -1; }
+                    if (b.name > a.name) { return 1; }
+                    return 0;
+                })
             return {
                 ...state,
                 dogs: sortName
             }
 
         case 'WEIGTH_DOGS':
-            const sortWeigth = action.payload === 'asc'?
-            [...state.dogs].sort((a, b)=>{
-                if(a.weight_max > b.weight_max) {return 1}  
-                if(b.weight_max > a.weight_max) {return -1} 
-                return 0 
-            }) :  
-            [...state.dogs].sort((a, b)=>{
-                if(a.weight_max > b.weight_max) {return -1}  
-                if(b.weight_max > a.weight_max) {return 1} 
-                return 0
-            })
-            return{
+            const sortWeigth = action.payload === 'asc' ?
+                [...state.dogs].sort((a, b) => {
+                    if (a.weight_max > b.weight_max) { return 1 }
+                    if (b.weight_max > a.weight_max) { return -1 }
+                    return 0
+                }) :
+                [...state.dogs].sort((a, b) => {
+                    if (a.weight_max > b.weight_max) { return -1 }
+                    if (b.weight_max > a.weight_max) { return 1 }
+                    return 0
+                })
+            return {
                 ...state,
                 dogs: sortWeigth
             }
-        
-        case 'DOGS_TEMPERAMENTS':
-            console.log('activaste la accion del filter')
+
+        case 'LIST_TEMPERAMENTS':
             return {
                 ...state,
                 temperaments: action.payload
+            }
+        case 'DOGS_BY_TEMP':
+            console.log('activaste filter')
+            return {
+                ...state,
+                dogs: action.payload,
+            }
+        case 'CREATED':
+            const createdFilter = action.payload === 'inDB' ?
+                state.allDogs.filter(dog => dog.createdInDB === true) :
+                state.allDogs.filter(dog => !dog.createdInDB);
+            return {
+                ...state,
+                dogs: createdFilter,
             }
         
         default:

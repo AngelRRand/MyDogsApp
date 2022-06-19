@@ -1,9 +1,15 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { GiWeight } from "react-icons/gi";
-const Card = ({ name, image, temperament, w_min, w_max, id }) => {
-
+const Card = ({ name, image, temperaments, w_min, w_max, id }) => {
+  let temp = "";
+  typeof temperaments === "object" ?
+      temp = temperaments.map(t => {
+          return t.name
+      }).join(", ") : temp = temperaments
+  
   return (
+
     <article className='card'>
       <div className='card_img_h'>
         <img
@@ -23,10 +29,11 @@ const Card = ({ name, image, temperament, w_min, w_max, id }) => {
           <p>  {w_min} <GiWeight/> {w_max}  </p>
         </div>
         <div className='temperaments'>
-         <span>{temperament}</span> 
+         <span>{temp}</span> 
         </div>
       </div>
     </article>
+
   )
 }
 

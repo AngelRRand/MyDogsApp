@@ -71,10 +71,24 @@ export function filterDogsTemp(payload) {
         }
     }
 }
+export function paginationReset(payload) {
+    console.log('activastePaginationAccion')
+    return {
+        type: 'PAGINATION_RESET',
+        payload
+    }
+}
 
 export function filterCreated(payload) {
     return {
         type: 'CREATED',
         payload
+    }
+}
+
+export function postDog(payload) {
+    return async function (dispatch) {
+        const response = await axios.post('http://localhost:3001/dogs', payload);
+        return response;
     }
 }

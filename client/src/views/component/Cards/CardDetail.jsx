@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { detailDogs } from '../../../redux/actions';
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack, IoMdCreate } from "react-icons/io";
 const CardDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -21,10 +21,10 @@ const CardDetail = () => {
     <div className='detail'>
       <div className='detailArrow'>
         <Link style={{ textDecoration: 'none' }} to={'/home'}><IoIosArrowBack size={70}></IoIosArrowBack></Link>
+        <Link style={{ textDecoration: 'none' }} to={'/create'}><IoMdCreate size={70}></IoMdCreate></Link>
       </div>
       <div className='detailFocus'>
         <h1>{detail.name}</h1>
-        <div className='card_Detail'>
           <img src={detail.image} alt="dog" />
           <p>
             {
@@ -40,7 +40,6 @@ const CardDetail = () => {
                 temp
             }
           </p>
-        </div>
       </div>
       <div className='detailInfo'>
         <div className='life'>

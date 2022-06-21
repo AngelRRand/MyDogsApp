@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { filterTemperament, filterDogsTemp, filterCreated } from '../../../redux/actions';
 
+import { paginationReset } from '../../../redux/actions';
 
 export const Filters = () => {
 
@@ -22,6 +23,7 @@ export const Filters = () => {
     function handleChance(e) {
         e.preventDefault();
         dispatch(filterDogsTemp(e.target.value))
+        dispatch(paginationReset())
     }
 
     function handleFilterCreated(e) {

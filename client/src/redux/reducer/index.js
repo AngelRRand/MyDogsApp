@@ -3,6 +3,7 @@ const inicialState = {
     allDogs: [],
     temperaments: [],
     detail: [],
+    pagination: [1]
 }
 
 function rootReducer(state = inicialState, action) {
@@ -82,7 +83,16 @@ function rootReducer(state = inicialState, action) {
                 ...state,
                 dogs: createdFilter,
             }
-        
+        case 'POST_DOG':
+            return {
+                ...state
+            }
+        case 'PAGINATION_RESET':
+            console.log('activaste filter + pag')
+            return {
+                ...state,
+                pagination: 1
+            }
         default:
             return state
     }

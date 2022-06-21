@@ -60,9 +60,10 @@ function validateForm(input) {
 
 export const Form = () => {
     const [error, setErrors] = useState('');
+    const dispatch = useDispatch();
     useEffect(() => {
         dispatch(filterTemperament());
-    }, []);
+    }, [dispatch]);
     const [input, setInput] = useState({
         name: "",
         image: "",
@@ -80,7 +81,6 @@ export const Form = () => {
             else return 1;
         }
     );
-    const dispatch = useDispatch();
 
     function handleChange(e) {
         setInput({

@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { FaArrowCircleDown, FaArrowAltCircleUp } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import React, { useState,  } from 'react'
+import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+
 const Pagination = ({ pag, setPag, max }) => {
   //  const dispatch = useDispatch();
-  const pagination = useSelector((state) => state.pagination)
-  console.log(pagination)
-  const [input, setInput] = useState('');
+  //const pagination = useSelector((state) => state.pagination)
+  //console.log(pagination)
+  const [input, setInput] = useState(1);
 
-  useEffect(() => {
+  /* useEffect(() => {
     setInput(pagination);
-  }, []);
-
-
+  }, []); */
+ 
   const nextPage = () => {
     setInput(parseInt(input) + 1);
     setPag(parseInt(pag) + 1);
@@ -35,24 +34,26 @@ const Pagination = ({ pag, setPag, max }) => {
       }
     }
   }
+
   const onChance = (e) => {
     setInput(e.target.value)
   }
+  
   return (
     <div className='pagination'>
-      <button className='button_pag' disabled={pag === 1 || pag < 1} onClick={previusPage}> <FaArrowAltCircleUp size={28} /> </button>
+      <button className='button_pag' disabled={pag === 1 || pag < 1} onClick={previusPage}> <BsChevronUp size={35} /> </button>
       <div className='pag-circ'>
         <input
           onChange={(e) => onChance(e)}
           onKeyDown={(e) => onKeyDown(e)}
           name="page"
           autoComplete='off'
-          value={pagination}
+          value={input}
         />
         <p>{Math.ceil(max)}</p>
 
       </div>
-      <button className='button_pag' disabled={pag === Math.ceil(max) || pag > Math.ceil(max)} onClick={nextPage}> <FaArrowCircleDown size={28} /> </button>
+      <button className='button_pagBot' disabled={pag === Math.ceil(max) || pag > Math.ceil(max)} onClick={nextPage}> <BsChevronDown size={35} /> </button>
     </div>
   )
 }

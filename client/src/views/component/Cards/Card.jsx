@@ -26,7 +26,7 @@ const Card = ({ name, image, temperaments, w_min, w_max, id }) => {
       </div>
       <div className='card_text'>
         <div className='weight'>
-          <p>  {w_min} <GiWeight/> {w_max}  </p>
+          <p>  {w_min} - {w_max}  </p>
         </div>
         <div className='temperaments'>
          <span>{temp}</span> 

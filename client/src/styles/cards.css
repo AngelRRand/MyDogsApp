@@ -1,0 +1,17 @@
+.container_cardsSearch{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
+}
+.cards {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, 230px);
+    justify-content: center;
+    z-index: 1;
+    grid-auto-rows: minmax(300px, auto);
+  }

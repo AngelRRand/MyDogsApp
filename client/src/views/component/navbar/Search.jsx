@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useDispatch,  } from "react-redux";
 import { searchDogs, getAllDogs } from '../../../redux/actions';
 import { BsSearch } from 'react-icons/bs';
-
+import '../../../styles/Seach.css'
 export const Search = () => {
 
     const [dogState, dogSet] = useState('');
@@ -29,7 +29,9 @@ export const Search = () => {
     }
 
     return (
-        <div>
+        <div className='searchMain'>
+            <div className='searchCom'>
+
             <input
                 type="text"
                 id="title"
@@ -38,8 +40,9 @@ export const Search = () => {
                 onChange={(e) => handleSearch(e)}
             />
             <button type="submit" onClick={handleSubmit}>
-                <BsSearch></BsSearch>
+                <BsSearch size={30}></BsSearch>
             </button>
+            </div>
         </div>
     )
 }

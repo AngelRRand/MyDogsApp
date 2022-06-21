@@ -1,41 +1,23 @@
 .containerApp {
   display: flex;
-
-}
-
-nav {
-  background-color: rgb(255, 255, 255);
-  height: 110vh;
-  width: 65px;
-  display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  border-right: 1px solid rgba(0, 0, 0, 0.8);
-  align-self: center;
-  box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+nav{
+  position: absolute;
+  width: 300px;
+}
 main {
   display: flex;
 }
 
-.cards {
-  display: grid;
-  height: 100vh;
-  justify-content: center;
-  grid-template-columns: 250px 250px 250px 250px;
-  width: 100vw;
-
-}
-
 .card {
-  margin: 15px;
+  margin: 5px;
   text-align: center;
   object-fit: contain;
   border-radius: 20px 20px 0px 0px;
   text-decoration: none;
-  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-
+  box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
 }
 
 .card img {
@@ -56,19 +38,18 @@ main {
   position: absolute;
   text-decoration: none;
   font-size: 10px;
-  color: rgb(0, 0, 0);
+  color: rgb(41, 36, 36);
   background-color: white;
   height: 20px;
   padding: 15px 0px 15px 0px;
   bottom: -17px;
   border-radius: 30px;
   width: 100%;
-  box-shadow: 20px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .name {
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: rgb(41, 36, 36);
 }
 
 .card img {
@@ -79,55 +60,67 @@ main {
 .cards-pagination {
   display: flex;
   flex-direction: column;
-
   justify-content: space-around;
 }
 
 .pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  width: 50px;
+  justify-content: center;
+  width: 70px;
 }
 
 .pag-circ {
-  width: 40px;
-  height: 40px;
-  border: 2px solid rgba(0, 0, 0, 0.8);
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
 }
 
 .pag-circ input {
-  border: none;
   font-size: 15px;
-  width: 100%;
+  justify-content: center;
   text-align: center;
-  background-color: black;
+  background-color: rgb(41, 36, 36);
+  border: none;
   color: white;
   width: 100%;
 }
 
 .button_pag {
+  justify-content: center;
+  align-items: center;
+  margin: 30px -10px;
   border: none;
-  margin: 30px -50px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  color: rgb(0, 0, 0);
+  background: none;
+  cursor: pointer;
+  animation-name: floatingTop;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 }
-
-.card_text {
-  z-index: 300;
-  height: 100%;
-
+.button_pagBot{
+  justify-content: center;
+  align-items: center;
+  margin: 30px -10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 }
-
-.card_text .weight {
-  transition: all ease 1s;
-}
-
-
 .weight p {
-  margin: 2px;
+  margin: 1px;
   font-size: 20px;
+  height: 30px;
+  background-color: transparent;
 }
 
 .text_icon {
@@ -136,13 +129,7 @@ main {
   color: blueviolet;
 }
 
-.temperaments span {
-  font-size: 11px;
-}
 
-.temperament_list {
-  display: inline;
-}
 
 .detail {
   display: flex;
@@ -159,7 +146,7 @@ main {
   animation-timing-function: ease-in-out;
   margin-left: 30px;
   margin-top: 5px;
-  color: black;
+  color: rgb(39, 41, 36);
   display: flex;
   flex-direction: column;
 }
@@ -175,8 +162,17 @@ main {
   height: 80vh;
   max-width: 50vw;
 }
+.temperaments{
+  font-size: 12px;
+  line-height: 0.7;
+}
 @keyframes floating {
   0% { transform: translate(0,  0px); }
   50%  { transform: translate(0, 15px); }
   100%   { transform: translate(0, -0px); }   
+}
+@keyframes floatingTop {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, -15px); }
+  100%   { transform: translate(0, 0px); }   
 }

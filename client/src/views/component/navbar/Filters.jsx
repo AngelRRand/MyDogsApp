@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { filterTemperament, filterDogsTemp, filterCreated } from '../../../redux/actions';
+import styled from 'styled-components';
+//import {allCard} from '../Cards/AllCards'
+//import { paginationReset } from '../../../redux/actions';
 
-import { paginationReset } from '../../../redux/actions';
-
-export const Filters = () => {
+export const Filters = ({setPag}) => {
 
     const temperaments = useSelector((state) => state.temperaments).sort(
         function (a, b) {
@@ -23,18 +24,26 @@ export const Filters = () => {
     function handleChance(e) {
         e.preventDefault();
         dispatch(filterDogsTemp(e.target.value))
-        dispatch(paginationReset())
+        setPag(1)
+        //dispatch(paginationReset())
     }
 
     function handleFilterCreated(e) {
         e.preventDefault();
         dispatch(filterCreated(e.target.value))
+        setPag(1)
     }
 
     //console.log(temperaments)
+    const FiltersOrders = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`
     return (
         <div>
-            <div>
+            <FiltersOrders>
                 <h5 >Temperament</h5>
                 <select onChange={(e) => handleChance(e)}>
                     <option defaultValue value="all">
@@ -46,8 +55,8 @@ export const Filters = () => {
                         </option>
                     )}
                 </select>
-            </div>
-            <div >
+            </FiltersOrders>
+            <FiltersOrders >
                 <h5 >Source</h5>
                 <select onChange={(e) => { handleFilterCreated(e)}} >
                     <option defaultValue value="all">
@@ -56,7 +65,7 @@ export const Filters = () => {
                     <option value="dogs">Dogs </option>
                     <option value="inDB">DB </option>
                 </select>
-            </div>
+            </FiltersOrders>
 
         </div>
     )

@@ -1,0 +1,29 @@
+.search_bar{
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    margin-right: 100px;
+    
+}
+.searchCom{
+    justify-content: center;
+    align-content: center;
+    display: flex;
+}
+.searchCom button{
+    border: none;
+    background-color: rgb(41, 36, 36);
+    color: white;
+    text-shadow: none;
+    cursor: pointer;
+    width: 80px;
+}
+.searchCom input{
+    width: 100%;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-bottom: 8px solid rgb(41, 36, 36);
+    font-size: 40px;
+    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+}

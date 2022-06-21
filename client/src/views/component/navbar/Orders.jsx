@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from "react-redux";
 import { alfabeticDogs, weigthDogs } from '../../../redux/actions';
+import styled from 'styled-components';
 
 
 export const Orders = () => {
@@ -17,13 +18,18 @@ export const Orders = () => {
         dispatch(weigthDogs (e.target.value));
     }
 
-
+const FiltersOrders = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`
 
 
     return (
         <div>
-            <div>
-                <h5 >Order by name</h5>
+            <FiltersOrders>
+                <h5 >Name</h5>
                 <select onChange={(e) => { handleOrderAlfabetic(e) }} >
                     <option defaultValue value="all" hidden>
                         Order
@@ -31,9 +37,9 @@ export const Orders = () => {
                     <option value="asc">A - Z</option>
                     <option value="desc">Z - A</option>
                 </select>
-            </div>
-             <div>
-                <h5 >Order by weight</h5>
+            </FiltersOrders>
+             <FiltersOrders>
+                <h5 >Weight</h5>
                 <select onChange={(e) => { handleOrderWeight(e) }} >
                     <option defaultValue value="all" hidden>
                         Weight
@@ -41,7 +47,7 @@ export const Orders = () => {
                     <option value="asc">MIN - MAX</option>
                     <option value="desc">MAX - MIN</option>
                 </select>
-            </div>
+            </FiltersOrders>
         </div>
 
     )

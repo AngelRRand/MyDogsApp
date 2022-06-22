@@ -1,31 +1,25 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useDispatch,  } from "react-redux";
-import { searchDogs, getAllDogs } from '../../../redux/actions';
-import { BsSearch } from 'react-icons/bs';
+import { searchDogs } from '../../../redux/actions';
 import '../../../styles/Seach.css'
 export const Search = () => {
 
     const [dogState, dogSet] = useState('');
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(searchDogs(dogState))
+        
+    }, [dispatch ,dogState]);
 
-
-    function handleSubmit(event) {
-        event.preventDefault();
-        if(dogState.length <= 0){
-            return alert('error')
-        }else{
-            dispatch(searchDogs(dogState));
-            dogSet('');
-        }
-    }
+    
     function handleSearch(e){
         dogSet(e.target.value) 
-        if(dogState.length === 0 || !dogState || dogState === ''){
-            getAllDogs()
+        /* if(dogState.length === 0 || !dogState || dogState === ''){
+            dispatch(getAllDogs())
         }else{
             dispatch(searchDogs(dogState))
-        }
+        } */
     }
 
     return (
@@ -39,9 +33,6 @@ export const Search = () => {
                 value={dogState}
                 onChange={(e) => handleSearch(e)}
             />
-            <button type="submit" onClick={handleSubmit}>
-                <BsSearch size={30}></BsSearch>
-            </button>
             </div>
         </div>
     )

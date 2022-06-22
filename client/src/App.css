@@ -7,6 +7,7 @@ nav{
   position: absolute;
   width: 300px;
 }
+
 main {
   display: flex;
 }
@@ -131,39 +132,8 @@ main {
 
 
 
-.detail {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-}
-
-.detailArrow {
-  animation-name: floating;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  margin-left: 30px;
-  margin-top: 5px;
-  color: rgb(39, 41, 36);
-  display: flex;
-  flex-direction: column;
-}
-
-.detailFocus {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.detailFocus img{
-  width: 50vw;
-  height: 80vh;
-  max-width: 50vw;
-}
 .temperaments{
-  font-size: 12px;
+  font-size: 17px;
   line-height: 0.7;
 }
 @keyframes floating {
@@ -175,4 +145,19 @@ main {
   0% { transform: translate(0,  0px); }
   50%  { transform: translate(0, -15px); }
   100%   { transform: translate(0, 0px); }   
+}
+@keyframes floatingR {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(10px, 0px); }
+  100%   { transform: translate(0, 0px); }   
+}
+@keyframes floatingIMG {
+  0% { transform: scale(1) }
+  50%  { transform: scale(1.01) }
+  100%   { transform: scale(1) }   
+}
+@keyframes ligth {
+  0% { box-shadow: rgb(49, 182, 78) 0px 20px 30px -10px; }
+  50%  { box-shadow: rgb(49, 255, 94) 0px 50px 35px -10px; }
+  100%   { box-shadow: rgb(49, 182, 78) 0px 20px 30px -10px; }   
 }

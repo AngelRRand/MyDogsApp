@@ -19,7 +19,7 @@ export const Filters = ({setPag}) => {
 
     useEffect(() => {
         dispatch(filterTemperament());
-    }, []);
+    }, [dispatch]);
 
     function handleChance(e) {
         e.preventDefault();

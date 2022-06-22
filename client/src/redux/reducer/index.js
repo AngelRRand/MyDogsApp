@@ -87,11 +87,10 @@ function rootReducer(state = inicialState, action) {
             return {
                 ...state
             }
-        case 'PAGINATION_RESET':
-            console.log('activaste filter + pag')
+        case 'DELETE_DETAILS':
             return {
                 ...state,
-                pagination: 1
+                details: []
             }
         default:
             return state

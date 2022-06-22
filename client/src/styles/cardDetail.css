@@ -1,0 +1,53 @@
+.detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.detailArrow {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    width: 120px;
+    height: 100vh;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+.arrow{
+    color: rgb(41, 36, 36);
+    animation-name: floatingTop;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+.arrowDos{
+    color: rgb(41, 36, 36);
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+.detailFocus h1{
+    position: absolute;
+    bottom: 140px;
+    padding: 10px 100px;
+    border-radius: 10% 10% 15% 15%;
+    background-color: rgb(255, 255, 255);
+    font-size:50px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.detailFocus img {
+    width: 50vw;
+    height: 80vh;
+    max-width: 50vw;
+}
+.detailInfo{
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100px;
+}

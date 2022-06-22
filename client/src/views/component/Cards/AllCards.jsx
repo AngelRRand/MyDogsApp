@@ -16,7 +16,7 @@ const Home = () => {
     //console.log(dogs)
 
     const [pag, setPag] = useState(1);
-    const [dogsPag, setDogsPag] = useState(8);
+    const [dogsPag] = useState(8);
     const max = dogs.length / dogsPag
     //console.log(dogs)
     console.log(pag)

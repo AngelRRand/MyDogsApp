@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { GiWeight } from "react-icons/gi";
 const Card = ({ name, image, temperaments, w_min, w_max, id }) => {
   let temp = "";
   typeof temperaments === "object" ?
@@ -9,7 +8,6 @@ const Card = ({ name, image, temperaments, w_min, w_max, id }) => {
       }).join(", ") : temp = temperaments
   
   return (
-
     <article className='card'>
       <div className='card_img_h'>
         <img

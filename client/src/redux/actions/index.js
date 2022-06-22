@@ -31,7 +31,13 @@ export function detailDogs(id) {
         })
     }
 }
-
+export function deleteDetails() {
+    return async function (dispatch) {
+        return dispatch({
+            type: 'DELETE_DETAILS'
+        })
+    }
+}
 export function alfabeticDogs(payload) {
     return {
         type: 'ALFABETIC_DOGS',
@@ -48,13 +54,13 @@ export function weigthDogs(payload) {
 
 export function filterTemperament() {
     return async function (dispatch) {
-            var response = await axios.get(`http://localhost:3001/temperaments`)
-            var listResponse = response.data.map(temp => temp.name)
-            //console.log(listResponse)
-            return dispatch({
-                type: 'LIST_TEMPERAMENTS',
-                payload: listResponse
-            })
+        var response = await axios.get(`http://localhost:3001/temperaments`)
+        var listResponse = response.data.map(temp => temp.name)
+        //console.log(listResponse)
+        return dispatch({
+            type: 'LIST_TEMPERAMENTS',
+            payload: listResponse
+        })
     }
 }
 

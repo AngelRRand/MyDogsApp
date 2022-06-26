@@ -5,6 +5,7 @@ const { Temperament, Dog } = require('../db');
 const allDogApi = async () => {
     const ApiGet = await axios.get(`https://api.thedogapi.com/v1/breeds?${KEY}`)
     const ApiInfo = await ApiGet.data.map(d => {
+        //console.log(d.temperament.split(',').slice(1,4).toString()) 
         return {
             weight_min: parseInt(d.weight.metric.slice(0, 2).trim()),
             weight_max: parseInt(d.weight.metric.slice(4).trim()),
@@ -21,6 +22,7 @@ const allDogApi = async () => {
     return ApiInfo
 
 }
+
 const allDogsDb = async () => {
     let bd = await Dog.findAll({
         include: {
@@ -33,7 +35,8 @@ const allDogsDb = async () => {
     })
     //console.log(bd)
     return bd
-}
+} 
+
 //console.log(allDogsDb())
 
 const allDogs = async () => {

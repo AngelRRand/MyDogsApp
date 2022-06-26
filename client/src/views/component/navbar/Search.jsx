@@ -31,8 +31,10 @@ export const Search = () => {
                 id="title"
                 autoComplete="off"
                 value={dogState}
+                placeholder='Search dog...'
                 onChange={(e) => handleSearch(e)}
             />
+            
             </div>
         </div>
     )

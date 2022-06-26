@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { BsXLg } from "react-icons/bs";
 import styled from 'styled-components';
 import { GiDogHouse } from "react-icons/gi";
-import dogTres from '../img/perrito2.jpg'
+import dogTres from '../img/perrito1.jpg'
 import '../styles/form.css'
 
 const Card = styled.div`
@@ -58,9 +58,18 @@ function validateForm(input) {
     let errors = {};
 
 
+    if(input.temperament.length === 0){
+        errors.temperament = 'Must have at least one temperament';
+    } else{
+        errors.temperament = ''
+    }
+
     if (!input.name) {
         errors.name = "You must type a name";
-    } else {
+    } else if(!input.name.match(/^[A-Za-z\s]+$/)) {
+        errors.name = "your dogs can't use numbers";
+    }
+    else {
         errors.name = "";
     }
 
@@ -68,8 +77,8 @@ function validateForm(input) {
     if (!input.weight_min) {
 
         errors.weight_min = "Type a valid minimal weight number";
-    } else if (!/\d{1,2}/gi) {
-        errors.weight_min = "Weight must have min values. Example: '25'";
+    } else if (!input.weight_min.match(/^([0-9])*$/)) {
+        errors.weight_min = "WeightMin can only use numbers. ";
     } else {
         errors.weight_min = "";
     }
@@ -78,8 +87,8 @@ function validateForm(input) {
     if (!input.weight_max) {
 
         errors.weight_max = "Type a valid maxim weight number";
-    } else if (!/\d{1,2}/gi) {
-        errors.weight_max = "Weight must have max values. Example: '25'";
+    } else if (!input.weight_max.match(/^([0-9])*$/)) {
+        errors.weight_max = "WeightMax can only use numbers.";
     } else {
         errors.weight_max = "";
     }
@@ -87,8 +96,8 @@ function validateForm(input) {
     if (!input.height_min) {
 
         errors.height_min = "Type a valid minimal height number";
-    } else if (!/\d{1,2}/gi) {
-        errors.height_min = "Height must have min values. Example: '25'";
+    } else if (!input.height_min.match(/^([0-9])*$/)) {
+        errors.height_min = "HeightMin can only use numbers.";
     } else {
         errors.height_min = "";
     }
@@ -97,8 +106,8 @@ function validateForm(input) {
     if (!input.height_max) {
 
         errors.height_max = "Type a valid maxim height number";
-    } else if (!/\d{1,2}/gi) {
-        errors.height_max = "Height must have max values. Example: '25'";
+    } else if (!input.height_max.match(/^([0-9])*$/)) {
+        errors.height_max = "HeightMax can only use numbers. ";
     } else {
         errors.height_max = "";
     }
@@ -166,7 +175,8 @@ export const Form = () => {
             !error.weight_min &&
             !error.height_min &&
             !error.weight_max &&
-            !error.height_max
+            !error.height_max &&
+            !error.temperament
         ) {
             alert("Your dog has been created successfully");
             dispatch(postDog(input));
@@ -181,7 +191,7 @@ export const Form = () => {
                 temperament: [],
             });
         } else {
-            return alert("Something went wrong. Please try again.");
+            return alert("It was not possible to create the dog.");
         }
     }
 
@@ -234,13 +244,15 @@ export const Form = () => {
                             <div className='form_temp form_input'>
                                 <label>Temperaments</label>
                                 <select onChange={(e) => handleSelect(e)}>
-                                    {temperaments.map((temp) => {
-                                        return (
-                                            <option key={temp} name={temp}>
-                                                {temp}
-                                            </option>
-                                        );
-                                    })}
+                                    {input.temperament.length === 5 ?
+                                        <div>No se puede añadir mas</div> :
+                                        temperaments.map((temp) => {
+                                            return (
+                                                <option key={temp} name={temp}>
+                                                    {temp}
+                                                </option>
+                                            );
+                                        })}
                                 </select>
 
                             </div>
@@ -328,6 +340,7 @@ export const Form = () => {
                     <p>{error.height_max}</p>
                     <p>{error.weight_min}</p>
                     <p>{error.weight_max}</p>
+                    <p>{error.temperament}</p>
                 </Error>
 
             </div>
@@ -357,12 +370,24 @@ export const Form = () => {
                 <div className='list_Temp'>
                     <h4>Your dog's temperaments are:</h4>
                     <div className='form_containerTemps'>
-                        {input.temperament.map((el) => (
-                            <div className='form_temps' key={el} >
-                                <p>{el}</p>
-                                <button onClick={() => handleDelete(el)}>x</button>
+                        {input.temperament.length === 5 ?
+                            <div>
+
+                                <h3>No se puede añadir mas</h3>
+                                <div>{input.temperament.map((el) => (
+                                    <div className='form_temps' key={el} >
+                                        <span>{el}</span>
+                                        <button onClick={() => handleDelete(el)}>x</button>
+                                    </div>
+                                ))}</div>
+
                             </div>
-                        ))}
+                            : input.temperament.map((el) => (
+                                <div className='form_temps' key={el} >
+                                    <p>{el}</p>
+                                    <button onClick={() => handleDelete(el)}>x</button>
+                                </div>
+                            ))}
                     </div>
                 </div>
 

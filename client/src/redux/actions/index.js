@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export function getAllDogs() {
     return async function (dispatch) {
-        var response = await axios.get('http://localhost:3001/dogs')
+        var response = await axios.get('/dogs')
         return dispatch({
             type: 'GET_ALL_DOGS',
             payload: response.data
@@ -11,9 +11,10 @@ export function getAllDogs() {
     }
 }
 
+
 export function searchDogs(name) {
     return async function (dispatch) {
-        var response = await axios.get(`http://localhost:3001/dogs?name=${name}`)
+        var response = await axios.get(`/dogs?name=${name}`)
         return dispatch({
             type: 'SEARCH_DOG',
             payload: response.data
@@ -23,7 +24,7 @@ export function searchDogs(name) {
 
 export function detailDogs(id) {
     return async function (dispatch) {
-        var response = await axios.get(`http://localhost:3001/dogs/${id}`)
+        var response = await axios.get(`/dogs/${id}`)
         console.log(response)
         return dispatch({
             type: 'DETAIL_DOG',
@@ -54,7 +55,7 @@ export function weigthDogs(payload) {
 
 export function filterTemperament() {
     return async function (dispatch) {
-        var response = await axios.get(`http://localhost:3001/temperaments`)
+        var response = await axios.get(`/temperaments`)
         var listResponse = response.data.map(temp => temp.name)
         //console.log(listResponse)
         return dispatch({
@@ -67,7 +68,7 @@ export function filterTemperament() {
 export function filterDogsTemp(payload) {
     return async function (dispatch) {
         try {
-            var response = await axios.get(`http://localhost:3001/temperaments/filter?temperament=${payload}`);
+            var response = await axios.get(`/temperaments/filter?temperament=${payload}`);
             return dispatch({
                 type: 'DOGS_BY_TEMP',
                 payload: response.data
@@ -75,13 +76,6 @@ export function filterDogsTemp(payload) {
         } catch (error) {
             console.log(error, "error en el filtro actions temperamnet")
         }
-    }
-}
-export function paginationReset(payload) {
-    console.log('activastePaginationAccion')
-    return {
-        type: 'PAGINATION_RESET',
-        payload
     }
 }
 
@@ -94,7 +88,7 @@ export function filterCreated(payload) {
 
 export function postDog(payload) {
     return async function (dispatch) {
-        const response = await axios.post('http://localhost:3001/dogs', payload);
+        const response = await axios.post('/dogs', payload);
         return response;
     }
 }

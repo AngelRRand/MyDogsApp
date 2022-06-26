@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import '../styles/landingPage.css'
-import dogUno from '../img/perrito1.jpg'
+import dogUno from '../img/perrito5.jpg'
 import dogDos from '../img/perrito2.jpg'
 import dogTres from '../img/perrito3.jpg'
 import dogCuatro from '../img/perrito4.jpg'
@@ -50,14 +50,14 @@ const LandingPage = () => {
       <Image className='landingImg' src={dogTres} />
       <div></div>
       <Title>
-        <h1 className='landH'>Discover the breeds and create your own little animals :3 </h1>
+        <h1 className='landH'>Discover the breeds and create your own little animals 🐾 </h1>
 
       </Title>
       <LandingArrow>
         <Link style={{ textDecoration: 'none' }} className='LandArrow' to='/home'><BsChevronRight size={75}></BsChevronRight></Link>
       </LandingArrow>
-      <Image className='landingImg' src={dogCuatro} />
       <div></div>
+      <Image className='landingImg' src={dogCuatro} />
       <Image className='landingImg' src={dogDos} />
 
     </LandingContainer>

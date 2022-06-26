@@ -13,5 +13,10 @@
     grid-template-columns: repeat(4, 230px);
     justify-content: center;
     z-index: 1;
-    grid-auto-rows: minmax(300px, auto);
-  }
+    grid-auto-rows: minmax(302px, auto);
+}
+@media screen and (max-width: 800px) {
+    .cards {
+        grid-template-columns: repeat(2, 100px);
+    }
+}

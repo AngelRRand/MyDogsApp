@@ -5,7 +5,7 @@ import styled from 'styled-components';
 //import {allCard} from '../Cards/AllCards'
 //import { paginationReset } from '../../../redux/actions';
 
-export const Filters = ({setPag}) => {
+export const Filters = ({setPag, setInput}) => {
 
     const temperaments = useSelector((state) => state.temperaments).sort(
         function (a, b) {
@@ -25,6 +25,7 @@ export const Filters = ({setPag}) => {
         e.preventDefault();
         dispatch(filterDogsTemp(e.target.value))
         setPag(1)
+        setInput(1)
         //dispatch(paginationReset())
     }
 
@@ -32,6 +33,7 @@ export const Filters = ({setPag}) => {
         e.preventDefault();
         dispatch(filterCreated(e.target.value))
         setPag(1)
+        setInput(1)
     }
 
     //console.log(temperaments)
@@ -41,11 +43,30 @@ export const Filters = ({setPag}) => {
     align-items: center;
     flex-direction: column;
 `
+    const Select = styled.select`
+        color: rgb(255, 255, 255);
+        background-color: rgb(41, 36, 36);
+        border: 2px solid white;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+        overflow:hidden;
+        ::-webkit-scrollbar {
+        width: 12px;
+        background-color: #F5F5F5;
+        }
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+        }
+    `
     return (
         <div>
             <FiltersOrders>
                 <h5 >Temperament</h5>
-                <select onChange={(e) => handleChance(e)}>
+                <Select onChange={(e) => handleChance(e)}>
                     <option defaultValue value="all">
                         AllTemps
                     </option>
@@ -54,17 +75,17 @@ export const Filters = ({setPag}) => {
                             {temp}
                         </option>
                     )}
-                </select>
+                </Select>
             </FiltersOrders>
             <FiltersOrders >
                 <h5 >Source</h5>
-                <select onChange={(e) => { handleFilterCreated(e)}} >
+                <Select onChange={(e) => { handleFilterCreated(e)}} >
                     <option defaultValue value="all">
                         All Sources 
                     </option>
                     <option value="dogs">Dogs </option>
                     <option value="inDB">DB </option>
-                </select>
+                </Select>
             </FiltersOrders>
 
         </div>

@@ -7,10 +7,18 @@
 }
 .landingImg{
     animation-name: floatingIMG;
-    animation-duration: 4s;
+    animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
 }
+
 .landH{
     color: rgb(41, 36, 36);
 }
+@keyframes floatingIMG {
+    0% { filter: opacity(0%);}
+    10%  { filter: opacity(30%); }
+    50%  { filter: opacity(150%); }
+    90%  { filter: opacity(30%); }
+    100%   {filter: opacity(0%); }   
+  }

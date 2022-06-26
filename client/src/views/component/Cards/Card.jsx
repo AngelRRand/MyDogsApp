@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 const Card = ({ name, image, temperaments, w_min, w_max, id }) => {
+ 
+ 
   let temp = "";
   typeof temperaments === "object" ?
       temp = temperaments.map(t => {

@@ -43,7 +43,6 @@ const SidebarContainer = styled.div`
     width:4.5rem;
     height:100vh;
     padding:1rem 0;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     border-left: none;
     display:flex;
     flex-direction:column;
@@ -77,7 +76,7 @@ const Item = styled.p`
     width: 100%;
     padding: 1.5rem 0;
     cursor: pointer;
-    color: white;
+    color: #e2e2e2;
     text-decoration: none;
     justify-content: space-around;
     align-items: center;
@@ -86,14 +85,14 @@ const Item = styled.p`
     display: flex;
     
     &:hover{
-    transform: scale(1.05);
-  }
+        color: white;
+    }
 `
 const Display = styled.div`
     display: ${(props) => (props.clicked ? 'flex' : 'none')};
 `
 
-const Navbar = ({ setPag }) => {
+const Navbar = ({ setPag, setInput }) => {
 
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
@@ -118,7 +117,7 @@ const Navbar = ({ setPag }) => {
 
                             <h3>Filters</h3>
                             <Display clicked={click}>
-                                <Filters setPag={setPag}></Filters>
+                                <Filters setPag={setPag} setInput={setInput}></Filters>
                             </Display>
 
                         </Item>

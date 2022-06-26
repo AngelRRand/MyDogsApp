@@ -24,29 +24,47 @@ const FiltersOrders = styled.div`
     align-items: center;
     flex-direction: column;
 `
-
+const Select = styled.select`
+        color: rgb(255, 255, 255);
+        background-color: rgb(41, 36, 36);
+        border: 2px solid white;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+        overflow:hidden;
+        ::-webkit-scrollbar {
+        width: 12px;
+        background-color: #F5F5F5;
+        }
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+        }
+    `
 
     return (
         <div>
             <FiltersOrders>
                 <h5 >Name</h5>
-                <select onChange={(e) => { handleOrderAlfabetic(e) }} >
+                <Select onChange={(e) => { handleOrderAlfabetic(e) }} >
                     <option defaultValue value="all" hidden>
                         Order
                     </option>
                     <option value="asc">A - Z</option>
                     <option value="desc">Z - A</option>
-                </select>
+                </Select>
             </FiltersOrders>
              <FiltersOrders>
                 <h5 >Weight</h5>
-                <select onChange={(e) => { handleOrderWeight(e) }} >
+                <Select onChange={(e) => { handleOrderWeight(e) }} >
                     <option defaultValue value="all" hidden>
                         Weight
                     </option>
                     <option value="asc">MIN - MAX</option>
                     <option value="desc">MAX - MIN</option>
-                </select>
+                </Select>
             </FiltersOrders>
         </div>
 

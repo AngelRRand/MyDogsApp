@@ -16,6 +16,7 @@ function App() {
         <Route path='/dogs/:id' element={<CardDetail/>} />
         <Route path='/create' element={<Form/>} />
       </Routes>
+      
     </div>
   );
 }

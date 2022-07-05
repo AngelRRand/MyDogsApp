@@ -113,17 +113,17 @@ const Navbar = ({ setPag, setInput }) => {
                         <Item>
                                 <Link style={{ textDecoration: 'none' }} to={'/create'}><h4 style={{color: 'white' }}>CREATE</h4></Link>
                         </Item>
-                        <Item onClick={() => handleClick()}>
+                        <Item >
 
-                            <h3>Filters</h3>
+                            <h3 onClick={() => handleClick()}>Filters</h3>
                             <Display clicked={click}>
                                 <Filters setPag={setPag} setInput={setInput}></Filters>
                             </Display>
 
                         </Item>
-                        <Item onClick={() => handleClick()}>
+                        <Item>
 
-                            <h3>Orders</h3>
+                            <h3 onClick={() => handleClick()}>Orders</h3>
                             <Display clicked={click}>
                                 <Orders></Orders>
                             </Display>
